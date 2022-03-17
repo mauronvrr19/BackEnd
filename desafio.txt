@@ -1,0 +1,217 @@
+
+por texto .stringify
+para ser un objeto y sea interpretado por js .parce
+
+leer parciar añadir objeto 
+numeros.push(3)
+escribir
+guardamos
+
+//     let lista = ["harina", "pan" ]
+
+//  function mostrarlista(datos) {
+
+//      if (datos.length > 0){
+//          for (let i = 0; i < datos.length; i++) {      
+//             console.log(datos[i])
+       
+//          }
+//      }
+// else {
+//     console.log("lista vacia")
+// }
+//  }
+
+//  (mostrarlista(lista))
+ 
+//  class Persona {
+//     constructor(nombre, edad) {
+//         this.nombre = nombre
+//         this.edad = edad
+//     }
+ 
+//     static saludoCorto = 'hola'
+ 
+//     saludoCompleto() {
+//         console.log(`buenaaass, soy ${this.nombre}`)
+//     }
+
+   
+
+//     }
+ 
+//     saludoEstatico() {
+//         console.log(Persona.saludoCorto)
+//     }
+//  }
+
+//  const p = new Persona('pepe', 5)
+
+// console.log(p)
+ 
+
+// class usuario {
+//     constructor (nombre, apellido,mascotas, libros){
+//         this.nombre = nombre ;
+//         this.apellido = apellido ;
+//         this.mascotas = ["lula","michi"];
+//         this.libros = [{
+//             libro : "los ojos del perro siveriano",
+//             año : "1994",
+//         },
+//         {
+//             libro : "el pianista sin rostro",
+//             año : "1992",
+//         }];
+//         this.presentacion = `mi nombres es ${this.nombre} y mi apellido es ${this.apellido}`
+//      }
+        
+//      getFullName (){ 
+//         console.log(this.presentacion)
+//     }
+
+//     addyCountMascota(){
+//         const agregar = atributos.mascotas.push ("sofi")
+// console.log("tengo " + agregar +" mascotas")
+// console.log(atributos.mascotas +" son mis mascotas")
+//     }
+
+
+//  addBook(){
+
+//     const otro = {
+//         libro : "marvel",
+//         año : "1980",
+//     }
+//     const finalResult = Object.assign(otro,atributos.libros);
+// console.log(finalResult)
+// return finalResult
+// }
+
+
+
+//     getBookName(){
+//         atributos.libros.forEach(element => {
+//             console.log(" titulo del libro " + element.libro )        
+//         })
+//         ;
+
+// } 
+
+
+// }
+
+// const atributos = new usuario("mauro", "navarro",);
+// console.log(atributos)
+// atributos.getFullName() 
+// atributos.addyCountMascota()
+// atributos.getBookName()
+// atributos.addBook()
+
+// ----------------
+// class Persona {
+
+//     constructor (nombre, apellido, libro, mascota){
+    
+//     this.nombre \= nombre;
+    
+//     this.apellido \= apellido;
+    
+//     this.libro \= libro;
+    
+//     this.mascota \= mascota;
+    
+//     }
+    
+//     getFullName(){
+    
+//     console.log (`El nombre es ${this.nombre} ${this.apellido}`)
+    
+//     }
+    
+//     addMascota(nombre){
+    
+//     this.mascota.push(nombre)
+    
+//     }
+    
+//     countMascotas(){
+    
+//     const cant \= this.mascota.length
+    
+//     console.log(“Tiene “+cant+” mascotas!“)
+    
+//     }
+    
+//     addBook(libro, autor){
+    
+//     this.libro.push({libro:libro, autor:autor})
+    
+//     }
+    
+//     getBook(){
+    
+//     let nombreLibro \= this.libro.map(nombre\=>
+    
+//     nombre.libro
+    
+//     )
+    
+//     console.log(nombreLibro);
+    
+//     }
+    
+//     }
+    
+//     const personas \= new Persona(“Jorge”, “Valle”, [{libro:“locura”, autor:“Josefo”}, {libro: “fantasma”,autor:“Andrei”}], [“perro”, “gato”])
+    
+//     personas.getFullName()
+    
+//     personas.addMascota(“loro”)
+    
+//     console.log(personas.mascota);
+    
+//     personas.countMascotas()
+    
+//     personas.addBook(“Tumba”, “Mariel”)
+    
+//     console.log(personas.libro);
+    
+//     personas.getBook()
+    
+    
+
+
+// ----------------------------
+// const delay = ret => {for(let i=0; i<ret*3e6; i++);}
+
+// function hacerTarea(num) {
+//     console.log('haciendo tarea ' + num)
+//     delay(100)
+// }
+
+// console.log('inicio de tareas');
+// hacerTarea(1)
+// hacerTarea(2)
+// hacerTarea(3)
+// hacerTarea(4)
+// console.log('fin de tareas')
+// console.log('otras tareas ...')
+
+// ----------------------------
+function hacerTarea(num, cb) {
+    console.log('haciendo tarea ' + num)
+    setTimeout(cb,100)
+}
+
+console.log('inicio de tareas');
+hacerTarea(1, () => {
+    hacerTarea(2, () => {
+        hacerTarea(3, () => {
+            hacerTarea(4, () => {
+                console.log('fin de tareas')
+            })
+        })
+    })
+})
+console.log('otras tareas ...')
