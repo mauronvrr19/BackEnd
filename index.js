@@ -24,16 +24,17 @@ class container {
 throw new error (error)
         }
     }
-async leer () {
-    try{
-      const read =  await fs.promises.readFile(this.archivo,"utf-8")
-      console.log(JSON.parse(read))
-     return read
-    }
-    catch(error){   
-throw new error (error)
-    }
-}
+
+    async leer () {
+        try{
+          const read =  await fs.promises.readFile(this.archivo,"utf-8")
+          const parceado = JSON.parse(read)
+         return parceado
+        }
+        catch(error){   
+    throw new error (error)
+        }}
+
 async id (id){ 
     try{
         const read =  await fs.promises.readFile(this.archivo,"utf-8")
@@ -57,7 +58,6 @@ async borrarxid (id){
       }
 
 }
-
 
     async sobreescribir(nombre, apellido, id) {
     const nuevo = {
