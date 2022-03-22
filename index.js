@@ -20,8 +20,8 @@ class container {
             await fs.promises.writeFile(this.archivo, "[]")
             console.log("borrado")
         }
-        catch(error){ 
-throw new error (error)
+        catch(error){
+            console.log(error)
         }
     }
 
@@ -31,8 +31,8 @@ throw new error (error)
           const parceado = JSON.parse(read)
          return parceado
         }
-        catch(error){   
-    throw new error (error)
+        catch(error){
+            console.log(error)
         }}
 
 async id (id){ 
@@ -72,7 +72,7 @@ async borrarxid (id){
         now.push(nuevo)
         fs.writeFileSync(this.archivo, JSON.stringify(now))
     }
-    catch(e){
+    catch(error){
         console.log(error)
     }
     }
