@@ -1,83 +1,62 @@
-const fs = require("fs")
+const productos = [
+  {
+      "id": 1,
+      "title": "Escuadra",
+      "price": 123.45,
+      "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png"
+  },
+  {
+      "id": 2,
+      "title": "pepito",
+      "price": 234.56,
+      "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png"
+  },
+  {
+      "id": 3,
+      "title": "Globo Terráqueo",
+      "price": 345.67,
+      "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png"
+  }
 
-class container {
-    constructor(archivo){
-        this.archivo = archivo ;
-    }
-    async escribir(dato) {
-        try {
-            //  creo la promera y el dato es el json
-            await fs.promises.writeFile(this.archivo, dato)
-            console.log("todo ok")
-        }
-        catch(error) {
-            console.log (error)
-        }
-    }
-    async borrar(){
-        try{
-            // creo la promesa y le paso un array vacio
-            await fs.promises.writeFile(this.archivo, "[]")
-            console.log("borrado")
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
+]
 
-    async leer () {
-        try{
-          const read =  await fs.promises.readFile(this.archivo,"utf-8")
-          const parceado = JSON.parse(read)
-         return parceado
-        }
-        catch(error){
-            console.log(error)
-        }}
 
-async id (id){ 
-    try{
-        const read =  await fs.promises.readFile(this.archivo,"utf-8")
-        const parceado = JSON.parse(read)
-        const mapa = console.table(parceado.find(prod =>prod.id == id))
-      }
-      catch(error){  
-            console.log (error)
-      }
-    
-}
-async borrarxid (id){
-    try{
-        const read =  await fs.promises.readFile(this.archivo,"utf-8")
-        const parceado = JSON.parse(read)
-        const mapa = console.table(parceado.filter(prod =>prod.id !== id))
-        return mapa
-      }
-      catch(error){  
-            console.log (error)
-      }
+ const getProductos = () => {
+  return productos;
+};
 
+
+ const getProducto = (id) => {
+  const index = productos.findIndex(producto => producto.id === parseInt(id));
+  if (index === -1) {
+      return 'no existe el id buscado';
+  }
+  return productos[index];
 }
 
-    async sobreescribir(nombre, apellido, id) {
-    const nuevo = {
-        nombre: nombre ,
-        apellido: apellido,
-        id: id,
-    }
-    try {
-        const cont = await fs.promises.readFile(this.archivo,"utf-8")
-        const now = JSON.parse(cont)
-        nuevo.id = now.length + 1;
-        now.push(nuevo)
-        fs.writeFileSync(this.archivo, JSON.stringify(now))
-    }
-    catch(error){
-        console.log(error)
-    }
-    }
+ const deleteProducto = (id) => {
+  const index = productos.filter(producto => producto.id === parseInt(id));
+  if (index === -1) {
+      return 'no existe el id buscado';
+  }
+  productos.splice(index, 1);
+  return `el producto con id ${id} fue eliminado correctamente`
 }
 
-module.exports = container;
+ const addProducto = producto => {
+  const productoNuevo = { ...producto, id: productos.length + 1 };
+  productos.push(productoNuevo);
+  return `el producto ${productoNuevo.title} fue agregado, con un precio de $${productoNuevo.price} y un thumbnail de ${productoNuevo.thumbnail}, su id asignado es ${productoNuevo.id}`
+};
 
+ const updateProducto = (id) => {
+  const index = productos.findIndex(prod => prod.id === parseInt(id));
+  if (index === -1) {
+      return 'no existe el id buscado';
+  }}
 
+module.exports = getProductos
+// module.exports = getProducto
+// module.exports = deleteProducto
+// module.exports = addProducto
+// module.exports = updateProducto
