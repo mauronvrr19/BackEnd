@@ -1,3 +1,4 @@
+
 const productos = [
   {
       "id": 1,
@@ -46,14 +47,18 @@ const productos = [
  const addProducto = producto => {
   const productoNuevo = { ...producto, id: productos.length + 1 };
   productos.push(productoNuevo);
-  return `el producto ${productoNuevo.title} fue agregado, con un precio de $${productoNuevo.price} y un thumbnail de ${productoNuevo.thumbnail}, su id asignado es ${productoNuevo.id}`
-};
+  return producto}
 
- const updateProducto = (id) => {
+const updateProducto = (id, productoNuevo) => {
   const index = productos.findIndex(prod => prod.id === parseInt(id));
   if (index === -1) {
       return 'no existe el id buscado';
-  }}
+  }
+  if (productoNuevo.title){productos[index].title = productoNuevo.title};
+  if (productoNuevo.price){productos[index].price = productoNuevo.price};
+  if (productoNuevo.thumbnail){productos[index].thumbnail = productoNuevo.thumbnail};
+  return `el producto ${productoNuevo.title} fue actualizado correctamente`;
+}
 
 module.exports = getProductos
 // module.exports = getProducto
