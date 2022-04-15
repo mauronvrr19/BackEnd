@@ -71,19 +71,17 @@ const io = require('socket.io')(server)
 //     });    
 // });
 
-//-------------------sockets -------------------//
 const messages = []
 
 io.on('connection',  (socket) => { 
 
-    io.emit('productos', producto.getAll())
+    io.emit('productos', producto.getProducto())
     socket.on('addNewProduct', (data) => {
         console.log(data)
         producto.save(data)
-        io.emit('productos', producto.getAll())
+        io.emit('productos', producto.getProductos())
     }) 
 
-    //chat
     
     socket.on('newMessage', (data) => {
         io.emit('message', data)
